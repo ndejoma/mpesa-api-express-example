@@ -4,11 +4,11 @@
 
 To run this Project locally, make sure your are running a `Node Version` greater
 than or equal to `18.0.0`. If you have using a Node version `<18.0.0` that is
-Node version less than `v18.0.0`, you have to change the  `engines.node`
-value in the `package.json` file of this Project after your clone this
-repository. You will also need to change `targets.node` value in the
-`babel.config.js` file of this project to a value that follows the
-[semver-spec](https://semver.org/) spec, eg `v16.0.8`
+Node version less than `v18.0.0`, you have to change the `engines.node` value in
+the `package.json` file of this Project after your clone this repository. You
+will also need to change `targets.node` value in the `babel.config.js` file of
+this project to a value that follows the [semver-spec](https://semver.org/)
+spec, eg `v16.0.8`
 
 -   ### Using an older Node version (that is less than v18.0.0 which current LTS release)
 
@@ -16,14 +16,14 @@ repository. You will also need to change `targets.node` value in the
 
         ```js
           "engines": {
-            "node": ">=18.0"
+            "node": "^16.0.0"
           }
         ```
 
     -   #### Use an older version as your babel transpilation target, that is any syntax you use in your code that is not available in your Node target will be `transpiled` to code syntax that works in the specified Node version. Make sure to specify the `MINOR` version `vMAJOR.MINOR.PATCH` eg `16.0`.
 
         ```js
-        targets: 'node 16.0' //select 16.0.x release of Node
+        targets: 'node 16.0'; //select 16.0.x release of Node
         ```
 
 -   ### Installing a specific Node version using.
