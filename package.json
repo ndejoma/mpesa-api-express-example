@@ -1,5 +1,5 @@
 {
-  "name": "daraja-mpesa-API-Example",
+  "name": "daraja-mpesa-api-example",
   "version": "1.0.0",
   "description": "Daraja Mpesa API express example with Node.js",
   "main": "src/app.js",
