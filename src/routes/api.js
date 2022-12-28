@@ -1,6 +1,7 @@
 /** @format */
 import express from 'express';
-import apiStatusRouter from 'src/routes/api/status';
+import apiStatusRouter from '@/routes/api/status';
+import mpesaAuthRouter from '@/routes/api/mpesa-auth';
 import Cors from 'cors';
 
 //create a router object
@@ -13,6 +14,15 @@ router.use(express.json());
 //the /api/status route
 router.use('/status', apiStatusRouter);
 
+//this default to the /api/mpesa-auth router
+router.use('/mpesa-auth', mpesaAuthRouter);
+
+/***
+ * if you are calling the API from your frontend code
+ *  whitelist your domain and local testing origin
+ *  eg https://mydomain.com without the port
+ *  Also http://mydomain.com without the port should be added
+ */
 const whitelist = [
     'http://localhost:3000',
     'http://localhost:3001',
