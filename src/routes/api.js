@@ -1,21 +1,29 @@
 /** @format */
 import express from 'express';
+import Cors from 'cors';
 import apiStatusRouter from '@/routes/api/status';
 import mpesaAuthRouter from '@/routes/api/mpesa-auth';
-import Cors from 'cors';
+import stkpushRouter from '@/routes/api/stkpush';
+import testApiRouter from '@/routes/api/test';
 
 //create a router object
 //NOTE the default path is /api for this  router object
-const router = express.Router();
+const apiRouter = express.Router();
 
 //parse the body to JSON using the express.json middleware function
-router.use(express.json());
+apiRouter.use(express.json());
 
 //the /api/status route
-router.use('/status', apiStatusRouter);
+apiRouter.use('/status', apiStatusRouter);
+
+//the /api/test api route
+apiRouter.use('/test', testApiRouter);
 
 //this default to the /api/mpesa-auth router
-router.use('/mpesa-auth', mpesaAuthRouter);
+apiRouter.use('/mpesa-auth', mpesaAuthRouter);
+
+//this maps to the /api/stkpush route
+apiRouter.use('/stkpush', stkpushRouter);
 
 /***
  * if you are calling the API from your frontend code
@@ -42,6 +50,6 @@ const corsOptions = {
 };
 
 //allow requests from localhost, plantsvee.co.ke and Rest clients only
-router.use(Cors(corsOptions));
+apiRouter.use(Cors(corsOptions));
 
-export default router;
+export default apiRouter;

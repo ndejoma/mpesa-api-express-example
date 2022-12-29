@@ -1,7 +1,7 @@
 /** @format */
 import express from 'express';
-import api from 'src/routes/api';
-import { error404, handleRouteErrors } from 'src/lib/error';
+import apiRouter from '@/routes/api';
+import { error404, handleRouteErrors } from '@/lib/error';
 
 /**
  * the port to listen on, you can pass the PORT
@@ -12,11 +12,12 @@ const PORT = process.env.PORT ?? 3008;
 
 const app = express();
 
-app.use('/api', api);
+app.use('/api', apiRouter);
 
 /**
  * These middleware function should always be the last
- * 
+ * Error handling middleware function  should be last in the Middleware stack according
+ * to the Express documentation
  */
 app.use(error404);
 app.use(handleRouteErrors);

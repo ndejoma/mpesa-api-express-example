@@ -4,7 +4,7 @@
  * @format
  */
 
-import nodeLog from 'src/lib/nodeLog';
+import nodeLog from '@/lib/nodeLog';
 
 function makeError(message, status) {
     const err = message instanceof Error ? message : new Error(message);
