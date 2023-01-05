@@ -2,7 +2,7 @@
 import genMpesaReqPassword from '@/lib/genMpesaReqPass';
 import getMpesaAuthToken from '@/lib/getMpesaAuthToken';
 import nodeLog from '@/lib/nodeLog';
-import getCurrentTimeStamp from '@/utils/getCurrentTimeStamp';
+import getCurrentTimeStamp from '@/lib/getCurrentTimeStamp';
 import isValidMpesaNumber from '@/utils/isValidMpesaNumber';
 import isValidMpesaTransactionAmount from '@/utils/isValidMpesaTransactionAmount';
 import { Router } from 'express';

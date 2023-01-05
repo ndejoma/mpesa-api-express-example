@@ -1,7 +1,6 @@
 /** @format */
 
 const path = require('node:path');
-const webpack = require('webpack');
 const fs = require('node:fs');
 const Dotenv = require('dotenv-webpack');
 

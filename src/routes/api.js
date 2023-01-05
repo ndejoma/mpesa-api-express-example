@@ -5,6 +5,7 @@ import apiStatusRouter from '@/routes/api/status';
 import mpesaAuthRouter from '@/routes/api/mpesa-auth';
 import stkpushRouter from '@/routes/api/stkpush';
 import testApiRouter from '@/routes/api/test';
+import mpesaWebhookRouter from '@/routes/api/mpesa-webhook';
 
 //create a router object
 //NOTE the default path is /api for this  router object
@@ -25,6 +26,9 @@ apiRouter.use('/mpesa-auth', mpesaAuthRouter);
 //this maps to the /api/stkpush route
 apiRouter.use('/stkpush', stkpushRouter);
 
+//this maps to the /api/mpesa-webhook route
+apiRouter.use('/payment', mpesaWebhookRouter);
+
 /***
  * if you are calling the API from your frontend code
  *  whitelist your domain and local testing origin
@@ -39,8 +43,8 @@ const whitelist = [
 ];
 
 const corsOptions = {
-    origin: function (origin, callback) {
-        //the !origin prevents blocking of Rest clients such as Thunder Client or Postman
+    origin:  (origin, callback) => {
+        //the !origin check prevents blocking of Rest clients such as Thunder Client or Postman
         if (whitelist.includes(origin) || !origin) {
             callback(null, true);
         } else {

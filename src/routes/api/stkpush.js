@@ -3,7 +3,8 @@
 import genMpesaReqPassword from '@/lib/genMpesaReqPass';
 import getMpesaAuthToken from '@/lib/getMpesaAuthToken';
 import mpesaAxios from '@/lib/mpesaAxios';
-import getCurrentTimeStamp from '@/utils/getCurrentTimeStamp';
+import nodeLog from '@/lib/nodeLog';
+import getCurrentTimeStamp from '@/lib/getCurrentTimeStamp';
 import isValidMpesaNumber from '@/utils/isValidMpesaNumber';
 import isValidMpesaTransactionAmount from '@/utils/isValidMpesaTransactionAmount';
 import { Router } from 'express';
@@ -42,6 +43,17 @@ stkpushRouter.post('', async (req, res) => {
                 //generate a base64 encoded string which is a
                 const Password = genMpesaReqPassword(Timestamp);
 
+                const reqData = {
+                    ...staticReqData,
+                    Password,
+                    Timestamp,
+                    Amount: process.env.NODE_ENV === 'production' ? amount : 1,
+                    PartyA: PhoneNumber,
+                    PhoneNumber,
+                };
+
+                nodeLog(reqData, 'The data from the request');
+
                 const { data } = await mpesaAxios.post(
                     '/mpesa/stkpush/v1/processrequest',
                     {
@@ -78,6 +90,7 @@ stkpushRouter.post('', async (req, res) => {
                         'The STK push request was accepted, enter your Mpesa PIN when prompted',
                 });
             } catch (err) {
+                nodeLog(err, 'The error here ****');
                 return res.status(500).send({
                     message:
                         'There was an error while processing your payment request',

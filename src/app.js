@@ -6,12 +6,13 @@ import { error404, handleRouteErrors } from '@/lib/error';
 /**
  * the port to listen on, you can pass the PORT
  * as an environment variable in your shell
- * $ export PORT=3003 && pnpm run
+ * $ export PORT=3003 && pnpm run dev
  */
 const PORT = process.env.PORT ?? 3008;
 
 const app = express();
 
+//maps to the /api/* routes
 app.use('/api', apiRouter);
 
 /**
