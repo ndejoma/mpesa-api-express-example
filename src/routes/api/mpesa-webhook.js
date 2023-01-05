@@ -33,7 +33,7 @@ mpesaWebhookRouter.post('', (req, res) => {
             }
         );
 
-
+        nodeLog(amount, 'The amount');
     }
 });
 

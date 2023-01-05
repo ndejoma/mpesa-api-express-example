@@ -6,9 +6,10 @@ import mpesaAuthRouter from '@/routes/api/mpesa-auth';
 import stkpushRouter from '@/routes/api/stkpush';
 import testApiRouter from '@/routes/api/test';
 import mpesaWebhookRouter from '@/routes/api/mpesa-webhook';
+import confirmPaymentRouter from '@/routes/api/confirm-payment';
 
 //create a router object
-//NOTE the default path is /api for this  router object
+//NOTE the default path is /api/:path for this  app
 const apiRouter = express.Router();
 
 //parse the body to JSON using the express.json middleware function
@@ -29,6 +30,9 @@ apiRouter.use('/stkpush', stkpushRouter);
 //this maps to the /api/mpesa-webhook route
 apiRouter.use('/payment', mpesaWebhookRouter);
 
+//this maps to the /api/confirm-payment route
+apiRouter.use('/confirm-payment', confirmPaymentRouter)
+
 /***
  * if you are calling the API from your frontend code
  *  whitelist your domain and local testing origin
@@ -40,6 +44,7 @@ const whitelist = [
     'http://localhost:3001',
     'http://localhost:3002',
     'http://localhost:3003',
+    'https://mydomain.com'
 ];
 
 const corsOptions = {
@@ -53,7 +58,7 @@ const corsOptions = {
     },
 };
 
-//allow requests from localhost, plantsvee.co.ke and Rest clients only
+//allow requests from localhost, mydomain.com and Rest clients only
 apiRouter.use(Cors(corsOptions));
 
 export default apiRouter;
