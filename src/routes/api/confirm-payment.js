@@ -31,7 +31,7 @@ confirmPaymentRouter.post('', async (req, res) => {
                         reqData,
                         {
                             headers: {
-                                AuthorizatioN: `Bearer ${authToken}`,
+                                Authorization: `Bearer ${authToken}`,
                             },
                         }
                     );
