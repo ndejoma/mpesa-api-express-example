@@ -53,7 +53,7 @@ const corsOptions = {
         if (whitelist.includes(origin) || !origin) {
             callback(null, true);
         } else {
-            callback(new Error('Failed to CORS policy'));
+            callback(new Error('Failed due to to cors policies'));
         }
     },
 };
