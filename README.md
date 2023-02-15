@@ -10,7 +10,7 @@ will also need to change `targets.node` value in the `babel.config.js` file of
 this project to a value that follows the [semver-spec](https://semver.org/)
 spec, eg `v16.0.8`
 
--   ### Using an older Node version (that is less than v18.0.0 which current LTS release)
+-   ### Using an older Node version (that is less than v18.x.y which current LTS release)
 
     -   #### Update your `package.json` file
 
